@@ -24,6 +24,7 @@ Entités :
         roles
         password
         isVerified
+        images oneToMany Image reversed by Image.postedBy
 
     _ ResetPasswordRequest :
         $id
@@ -32,9 +33,12 @@ Entités :
     _ Image :
         id
         fileName
+        imageFile
         alt
         featuredFor OneToOne ? Monster reversed by featuredImage
         postedBy ManyToOne ? User
+        createdAt
+        updatedAt (pour l'enregistrement via vichUploader)
 
     _ Movie :
         id
@@ -42,6 +46,7 @@ Entités :
         alt
         featuredFor OneToOne ? Monster reversed by featuredMovie
         postedBy ManyToOne ? User
+        createdAt
 
     _ Category :
         id
@@ -55,19 +60,20 @@ Entités :
     _ Monster ? :
         id
         name
-        nickname
-        father ManyToOne ? Monster  reverted by children ?
-        mother ManyToOne ? Monster  reverted by children ?
-        children ManyToMany ? Monster  reverted by father or mother ?
+        nicknames (séparés par une , ou une entité supplémentaire ?)
+        gender
+        parents ManyToMany ? Monster  reverted by children ? alimenté pour voir l'arborescence ?
+        children ManyToMany ? Monster  reverted by parents ?
         birthDay
         arrivalDate
         leavingDate
-        explanatoryText wysiwyg ?
+        explanatoryText wysiwyg ?(voir idées)
         featuredImage OneToOne ? image reverted by featuredFor
         featuredMovie ? OneToOne ? Movie reverted by featuredFor
-        images ManyToMany ? Image
-        movies ManyToMany ? Movie
+        images ManyToMany ? Image   non alimenté si father ou mother ?(possible ?)
+        movies ManyToMany ? Movie   non alimenté si father ou mother ?(possible ?)
         category ManyToOne ? Category reversed by Category.monters ?
+        cossard ? int (par ex pour les parents de Max)
 
 
 
@@ -91,6 +97,36 @@ TODOS :
         ne semble pas être dans le projet (dans le bundle de symfonycasts ?)
         voir pour traduire le message ;)
             c'est dans ResetPasswordController::reset()
+
+
+
+
+
+
+Idées :
+    _ possibilité upload d'image avec attribution à plusieurs Monstre ?
+    _ création d'un monstre :
+        - possibilité d'enregistrer des images de plusieurs manières :
+            - un bouton 'Ajouter une image' ouvre une pop-up contenant un formulaire de nouvelle image
+            - un bouton 'Choisir une image' ouvre une pop-up contenant les images enregistrées
+                ici un truc du genre vichUploader serait cool
+        - possibilité d'en créer qui n'habite pas ici : donne la possibilité de créer les parents de Max par exemple
+        - pour le texte explicatif :
+            - soit un wysiwyg avec un template intégré
+            - soit des champs supplémentaires :
+                - taille et poids adulte
+                - signes particuliers
+                - ... ce qu'il aime/ n'aime pas, peurs ..
+    _ page d'un monstre, plusieurs onglets :
+        - infos principales + image vedette
+        - texte explicatif
+        - arbre généalogique (présent si renseigné)
+        - galerie d'images et vidéos (si trop dur autre onglet)
+
+Réponses :
+    _ wysiwyg vide pour commencer
+
+
 
 
 
@@ -142,4 +178,21 @@ je veux que les users puissent modifier leur password
 
 COMMIT ===> [User] entité, repo, migration, création de compte, modif de mdp, login et logout
 
-Commit ===> [STYLE] création arborescence assets/styles + fichiers vides + création de 2 fichiers (home et security) via webpack encore + suppression app.css et son import dans app.js
+COMMIT ===> [STYLE] création arborescence assets/styles + fichiers vides + création de 2 fichiers (home et security) via webpack encore + suppression app.css et son import dans app.js
+
+je veux utiliser des slugs, des timestamps et charger des images
+
+        composer require stof/doctrine-extensions-bundle
+        composer require vich/uploader-bundle
+    modif de config/packages/stof_doctrine_extensions.yam
+    modif de config/services.yaml
+    modif de config/packages\vich-uploader.yaml
+
+        php bin/console make:entity
+    => Image
+    modif entité Image pour le slug, les timestamps et le chargement du fichier
+
+        php bin/console make:migration
+        php bin/console doctrine:migrations:migrate
+
+COMMIT ===> [Image] création entité + repo + migration + ajout Gedmo et VichUploader
