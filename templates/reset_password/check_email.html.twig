@@ -2,6 +2,11 @@
 
 {% block title %}Email de demande de nouveau mot de passe envoyé{% endblock %}
 
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app_security_style') }}
+{% endblock %}
+
+
 {% block body %}
     <p>
         Si un compte correspondant à cette adresse email existe, alors un email contenant un lien permettant de modifier le mot de passe vient d'être envoyé. Ce lien exipre dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.

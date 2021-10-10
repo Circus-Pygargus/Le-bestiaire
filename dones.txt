@@ -17,7 +17,7 @@ Needed for server :
 
 
 Entités :
-    User :
+    _ User :
         id
         email
         username
@@ -25,9 +25,49 @@ Entités :
         password
         isVerified
 
-    ResetPasswordRequest :
+    _ ResetPasswordRequest :
         $id
         $user ManyToOne pour User
+
+    _ Image :
+        id
+        fileName
+        alt
+        featuredFor OneToOne ? Monster reversed by featuredImage
+        postedBy ManyToOne ? User
+
+    _ Movie :
+        id
+        fileName
+        alt
+        featuredFor OneToOne ? Monster reversed by featuredMovie
+        postedBy ManyToOne ? User
+
+    _ Category :
+        id
+        name
+        slug
+        featuredImage ? OneToOne ? image reverted by featuredFor
+        featuredMovie ? OneToOne ? movie reverted by featuredFor
+        explanatoryText
+        monsters OneToMany ? Monster.category
+
+    _ Monster ? :
+        id
+        name
+        nickname
+        father ManyToOne ? Monster  reverted by children ?
+        mother ManyToOne ? Monster  reverted by children ?
+        children ManyToMany ? Monster  reverted by father or mother ?
+        birthDay
+        arrivalDate
+        leavingDate
+        explanatoryText wysiwyg ?
+        featuredImage OneToOne ? image reverted by featuredFor
+        featuredMovie ? OneToOne ? Movie reverted by featuredFor
+        images ManyToMany ? Image
+        movies ManyToMany ? Movie
+        category ManyToOne ? Category reversed by Category.monters ?
 
 
 
@@ -101,3 +141,5 @@ je veux que les users puissent modifier leur password
         ainsi la durée d'utilisation du lien dans le mail de modif de mot de passe sera en fr
 
 COMMIT ===> [User] entité, repo, migration, création de compte, modif de mdp, login et logout
+
+Commit ===> [STYLE] création arborescence assets/styles + fichiers vides + création de 2 fichiers (home et security) via webpack encore + suppression app.css et son import dans app.js
