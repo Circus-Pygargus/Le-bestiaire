@@ -36,7 +36,8 @@ Entités :
         name
         imageFile
         alt
-        featuredFor OneToOne ? Monster reversed by featuredImage
+        featuredForCategory OneToOne ? Category reversed by featuredImage
+        featuredForMonster OneToOne ? Monster reversed by featuredImage
         postedBy ManyToOne ? User
         createdAt
         updatedAt (pour l'enregistrement via vichUploader)
@@ -47,7 +48,8 @@ Entités :
         name
         movieFile
         alt
-        featuredFor OneToOne ? Monster reversed by featuredMovie
+        featuredForCategory OneToOne ? Category reversed by featuredMovie
+        featuredForMonster OneToOne ? Monster reversed by featuredMovie
         postedBy ManyToOne ? User
         createdAt
         updatedAt
@@ -126,6 +128,9 @@ Idées :
         - texte explicatif
         - arbre généalogique (présent si renseigné)
         - galerie d'images et vidéos (si trop dur autre onglet)
+
+(non vues) :
+    _ création de catégorie ou de monstre, la featuredImage est obligatoire le featuredMovie ne l'est pas, mais sera pris en compte à la place de l'image si présent
 
 Réponses :
     _ wysiwyg vide pour commencer
@@ -210,3 +215,12 @@ COMMIT ===> [Image] création entité + repo + migration + ajout Gedmo et VichUp
         php bin/console doctrine:migrations:migrate
 
 COMMIT ===> [Movie] Création entité + repo + migration + ajout app.path.bestiaire_movies pour l'upload de vidéos
+
+        php bin/console make:entity
+    => Category
+    modif de l'entité Category
+
+        php bin/console make:migration
+        php bin/console doctrine:migrations:migrate
+
+COMMIT ===> [Category] Création entité + repo + migration
