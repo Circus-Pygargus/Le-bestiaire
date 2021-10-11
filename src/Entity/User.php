@@ -55,9 +55,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $images;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Movie::class, mappedBy="postedBy")
+     */
+    private $movies;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
+        $this->movies = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -189,6 +195,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($image->getPostedBy() === $this) {
                 $image->setPostedBy(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Movie[]
+     */
+    public function getMovies(): Collection
+    {
+        return $this->movies;
+    }
+
+    public function addMovie(Movie $movie): self
+    {
+        if (!$this->movies->contains($movie)) {
+            $this->movies[] = $movie;
+            $movie->setPostedBy($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMovie(Movie $movie): self
+    {
+        if ($this->movies->removeElement($movie)) {
+            // set the owning side to null (unless already changed)
+            if ($movie->getPostedBy() === $this) {
+                $movie->setPostedBy(null);
             }
         }
 

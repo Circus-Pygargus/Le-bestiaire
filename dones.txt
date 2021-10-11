@@ -32,7 +32,8 @@ Entités :
 
     _ Image :
         id
-        fileName
+        slug
+        name
         imageFile
         alt
         featuredFor OneToOne ? Monster reversed by featuredImage
@@ -42,11 +43,14 @@ Entités :
 
     _ Movie :
         id
-        fileName
+        slug
+        name
+        movieFile
         alt
         featuredFor OneToOne ? Monster reversed by featuredMovie
         postedBy ManyToOne ? User
         createdAt
+        updatedAt
 
     _ Category :
         id
@@ -196,3 +200,13 @@ je veux utiliser des slugs, des timestamps et charger des images
         php bin/console doctrine:migrations:migrate
 
 COMMIT ===> [Image] création entité + repo + migration + ajout Gedmo et VichUploader
+
+        php bin/console make:entity
+    => Movie
+    modif de config/services.yaml et de config/packages\vich-uploader.yaml pour ajouter le chemin d'upload des vidéos
+    modif de l'entité Movie
+
+        php bin/console make:migration
+        php bin/console doctrine:migrations:migrate
+
+COMMIT ===> [Movie] Création entité + repo + migration + ajout app.path.bestiaire_movies pour l'upload de vidéos
