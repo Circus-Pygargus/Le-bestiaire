@@ -264,3 +264,12 @@ Je veux utiliser des pages custom pour les erreurs type 40, 403 ou autres
     modif webpack config pour prise en compte du style
 
 COMMIT ===> [SECU] Ajout obligation ROLE_ADMIN pour accès pages /admin + pages custom error403 et Error 404 + style
+
+    Création du fichier Admin/CategoryController.php et de la route /admin/categories
+    ajout du block adminContent dans le template admin/base
+    Création du template admin/category/create.html.twig
+
+COMMIT ===> [PAGE] Création de la page d'ajout de nouvelle Category (controller + template)
+
+    ajout hiérarchie des roles dans /config/packages/security.yaml (ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_MEGA_ADMIN)
+
