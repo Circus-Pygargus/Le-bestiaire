@@ -14,22 +14,22 @@ class CategoryVoter extends Voter
     const CATEGORY_CREATE = 'CATEGORY_CREATE';
     const CATEGORY_EDIT = 'CATEGORY_EDIT';
 
-    private $security;
+    private Security $security;
 
     public function __construct(Security $security)
     {
         $this->security = $security;
     }
 
-    protected function supports(string $attribute, $category): bool
+    protected function supports(string $attribute, $subject): bool
     {
         // replace with your own logic
         // https://symfony.com/doc/current/security/voters.html
         return in_array($attribute, [self::CATEGORY_CREATE, self::CATEGORY_EDIT])
-            && $category instanceof Category;
+            && $subject instanceof Category;
     }
 
-    protected function voteOnAttribute(string $condition, $category, TokenInterface $token): bool
+    protected function voteOnAttribute(string $attribute, $subject, TokenInterface $token): bool
     {
         $user = $token->getUser();
         // if the user is anonymous, do not grant access
@@ -38,7 +38,7 @@ class CategoryVoter extends Voter
         }
 
         // ... (check conditions and return true to grant permission) ...
-        switch ($condition) {
+        switch ($attribute) {
             case self::CATEGORY_CREATE:
                 return $this->canCreate($user);
                 break;
