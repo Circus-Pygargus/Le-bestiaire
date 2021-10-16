@@ -271,5 +271,30 @@ COMMIT ===> [SECU] Ajout obligation ROLE_ADMIN pour accès pages /admin + pages 
 
 COMMIT ===> [PAGE] Création de la page d'ajout de nouvelle Category (controller + template)
 
-    ajout hiérarchie des roles dans /config/packages/security.yaml (ROLE_ADMIN, ROLE_SUPER_ADMIN, ROLE_MEGA_ADMIN)
+    /config/packages/security.yaml :
+        ajout hiérarchie des roles ROLE_CONTRIBUTOR, ROLE_ADMIN et ROLE_SUPER_ADMIN
+        suppression de la règle d'accès à la route /admin
 
+COMMIT ===> [SECU] création des roles contributor, admin et superAdmin + suppression de la règle d'accès aux routes /Admin
+
+    Admin/CategoryController.php : ajout de la méthode edit() et de la route /admin/categories
+    Création du template admin/category/edit.html.twig
+je veux un voteur pour savoir si le user peut ajouter ou éditer une Category
+
+        php bin/console make:voter
+    => CategoryVoter
+    modif du fichier src/Security/Voter/CategoryVoter.php
+        ajout et gestion des permissions CATEGORY_CREATE et CATEGORY_EDIT
+    Admin/CategoryController.php : ajout utilisation de denyAccessUnlessGranted() avec ces permissions
+
+COMMIT ===> [Category] Création route /admin/category/edit + permission admin only via CategoryVoter + template + permission contributor sur route /admin/category/edit
+
+
+
+
+
+infos pour plus tard :
+    _ template, affichage selon droit mini : ex :
+        {% if is_granted("CATEGORY_EDIT"") %}
+            <a href="{{ path("admin_categories_edit", {id: category.id} }}">Modifier</a>
+        {% endif %}
