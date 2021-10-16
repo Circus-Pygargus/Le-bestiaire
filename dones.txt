@@ -7,6 +7,11 @@ pour tester les mails en local
 on peut maintenant y accéder depuis : http://localhost:1080/
 
 
+pour tester les pages d'erreur en local :
+    http://localhost:8086/_error/404
+
+
+
 
 
 Needed for server :
@@ -242,6 +247,20 @@ COMMIT ===> [Style] Ajout feuille de style pour /home
 
         php bin/console make:Controller
     => AdminController
+    Déplacement du controller dans /src/Controller/admin
     Création et utilisation de /assets/styles/pages/_admin.scss pour les pages /admin
+    modif webpack config pour prise en compte du style
 
 COMMIT ===> [APP] Création AdminController + template + style
+
+    Ajout obligation d'être admin pour accéder à /admin dans /config/packages/secutity.yaml
+Je veux utiliser des pages custom pour les erreurs type 40, 403 ou autres
+
+        composer require symfony/twig-pack
+    Création de config/routes/dev/framework.yaml
+    J'y ajoute la route /_error pour pouvoir tester en dev les routes d'erreurs (ex : http://localhost:8000/_error/404)
+    Création des templates error404 et error403 pour afficher ces erreurs
+    Création des feuilles de style style-error.scss et pages/_error.scss
+    modif webpack config pour prise en compte du style
+
+COMMIT ===> [SECU] Ajout obligation ROLE_ADMIN pour accès pages /admin + pages custom error403 et Error 404 + style

@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Le Bestiaire 403{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app_error_style') }}
+{%  endblock %}
+
+{% block body %}
+    <div class="error-container">
+        <div class="error-div">
+            <div class="error-div_space-modulator"></div>
+
+            <h1 class="error-div-title">403</h1>
+
+            <p class="error-div-message">Vous n'avez pas les droits suffisants pour accéder à cette page !</p>
+
+            <div class="error-div_space-modulator"></div>
+        </div>
+    </div>
+{%  endblock %}

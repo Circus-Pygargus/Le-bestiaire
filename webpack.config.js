@@ -20,8 +20,9 @@ Encore
      * Each entry will result in one JavaScript file (e.g. app.js)
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
-    .addStyleEntry('app_home_style', './assets/styles/style-home.scss')
     .addStyleEntry('app_admin_style', './assets/styles/style-admin.scss')
+    .addStyleEntry('app_error_style', './assets/styles/style-error.scss')
+    .addStyleEntry('app_home_style', './assets/styles/style-home.scss')
     .addStyleEntry('app_security_style', './assets/styles/style-security.scss')
 
     .addEntry('app', './assets/app.js')
