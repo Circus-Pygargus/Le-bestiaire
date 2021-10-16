@@ -289,6 +289,13 @@ je veux un voteur pour savoir si le user peut ajouter ou éditer une Category
 
 COMMIT ===> [Category] Création route /admin/category/edit + permission admin only via CategoryVoter + template + permission contributor sur route /admin/category/edit
 
+        php bin/console make:voter
+    => ImageVoter
+    modif du fichier src/Security/Voter/CategoryVoter.php
+        ajout et gestion des permissions IMAGE_CREATE et IMAGE_EDIT
+
+COMMIT ==> [SECU] Création de ImageVoter : permissions IMAGE_CREATE et IMAGE_EDIT
+
 
 
 
