@@ -235,3 +235,13 @@ COMMIT ===> [Category] Création entité + repo + migration
         php bin/console doctrine:migrations:migrate
 
 COMMIT ===> [Monster] Création entité + repo + migration
+
+    Création et utilisation de /assets/styles/pages/_home.scss
+
+COMMIT ===> [Style] Ajout feuille de style pour /home
+
+        php bin/console make:Controller
+    => AdminController
+    Création et utilisation de /assets/styles/pages/_admin.scss pour les pages /admin
+
+COMMIT ===> [APP] Création AdminController + template + style
