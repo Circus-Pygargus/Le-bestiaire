@@ -66,18 +66,20 @@ Entités :
     _ Monster ? :
         id
         name
-        nicknames (séparés par une , ou une entité supplémentaire ?)
-        gender
-        parents ManyToMany ? Monster  reverted by children ? alimenté pour voir l'arborescence ?
-        children ManyToMany ? Monster  reverted by parents ?
-        birthDay
-        arrivalDate
-        leavingDate
+        slug
+        nicknames (séparés par une ,) nullable
+        gender nullable
+        parents ManyToMany ? Monster nullable reverted by children ? alimenté pour voir l'arborescence ?
+        children ManyToMany ? Monster nullable reverted by parents ?
+        birthDay nullable
+        arrivalDate nullable
+        leavingDate nullable
+        reasonForLeaving nullable
         explanatoryText wysiwyg ?(voir idées)
         featuredImage OneToOne ? image reverted by featuredFor
-        featuredMovie ? OneToOne ? Movie reverted by featuredFor
-        images ManyToMany ? Image   non alimenté si father ou mother ?(possible ?)
-        movies ManyToMany ? Movie   non alimenté si father ou mother ?(possible ?)
+        featuredMovie ? OneToOne ? Movie nullable reverted by featuredFor
+        images ManyToMany ? Image  non alimenté si father ou mother ?(possible ?)
+        movies ManyToMany ? Movie nullable  non alimenté si father ou mother ?(possible ?)
         category ManyToOne ? Category reversed by Category.monters ?
         cossard ? int (par ex pour les parents de Max)
 
@@ -224,3 +226,12 @@ COMMIT ===> [Movie] Création entité + repo + migration + ajout app.path.bestia
         php bin/console doctrine:migrations:migrate
 
 COMMIT ===> [Category] Création entité + repo + migration
+
+        php bin/console make:entity
+    => Monster
+    Modif de l'entité Monster
+
+        php bin/console make:migration
+        php bin/console doctrine:migrations:migrate
+
+COMMIT ===> [Monster] Création entité + repo + migration
