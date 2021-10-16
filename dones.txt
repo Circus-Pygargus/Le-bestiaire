@@ -296,6 +296,16 @@ COMMIT ===> [Category] Création route /admin/category/edit + permission admin o
 
 COMMIT ==> [SECU] Création de ImageVoter : permissions IMAGE_CREATE et IMAGE_EDIT
 
+    Correction CategoryVoter (légers prob variables)
+
+COMMIT ==> [FIX] CategoryVoter : corrections variables
+
+    Création de Admin/ImageController
+    Ajout méthode create
+        accès seulement si ROLE_CONTRIBUTOR
+    création du template admin/image/create.html.twig
+
+COMMIT ===> [IMAGE] Création de la route /admin/images/create + controller + permission + template
 
 
 
