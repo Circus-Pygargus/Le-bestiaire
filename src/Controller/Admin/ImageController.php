@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Image;
+use App\Form\CreateImageFormType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,11 +18,24 @@ class ImageController extends AdminController
     /**
      * @Route("/create", name="create")
      */
-    public function create ():Response
+    public function create (Request $request):Response
     {
         $image = new Image();
         $this->denyAccessUnlessGranted('IMAGE_CREATE', $image);
 
-        return $this->render('admin/image/create.html.twig');
+        $form = $this->createForm(CreateImageFormType::class, $image);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $image->setPostedBy($this->getUser());
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($image);
+            $em->flush();
+        }
+
+        return $this->render('admin/image/create.html.twig', [
+            'imageForm' => $form->createView()
+        ]);
     }
 }
