@@ -342,6 +342,9 @@ COMMIT ===> [Movie] Création de MovieVoter et des permissions MOVIE_CREATE et M
 
 COMMIT ===> [MOVIE] Création de la route /admin/movies/create accessible avec permission (controller + template)
 
+    Création de CreateMovieFormType
+
+COMMIT ===> [MOVIE] Création de CreateMovieFormType
 
 tips pour plus tard :
     _ template, affichage selon droit mini : ex :
