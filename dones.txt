@@ -358,7 +358,11 @@ COMMIT ===> [BUG][MOVIE] Ajout enregistrement de nouvelle vidéo
 
 COMMIT ===> [ENTITY] Image, Movie : ajout prop featuredForCategory en relation OneToOne inverse de Category.featuredImage et Category.featuredMovie
 
+    Création de CreateCategoryFormType
+    ajout de l'image représentative par choix parmi les images déjà uploadées
+        mais seulement parmi celles qui ne sont pas déjà représentatives d'une autre catégorie
 
+COMMIT ===> [Category] Création de CreateCategoryFormType
 
 
 tips pour plus tard :
