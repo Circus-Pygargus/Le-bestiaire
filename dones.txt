@@ -307,7 +307,12 @@ COMMIT ==> [FIX] CategoryVoter : corrections variables
 
 COMMIT ===> [IMAGE] Création de la route /admin/images/create + controller + permission + template
 
+    entité Image : ajout de la propriété fileName
+        c'est elle qui sera générée par vichUploader plutôt que name
+        name sera renseignée par le contributeur
+    vich_uploader.yaml : ajout utilisation de UniqidNamer
 
+COMMIT ===> [IMAGE] Ajout propriété fileName générée par vichUploader + migration
 
 
 infos pour plus tard :

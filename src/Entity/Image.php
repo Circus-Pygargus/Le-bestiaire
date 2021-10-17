@@ -33,7 +33,12 @@ class Image
     private $name;
 
     /**
-     * @Vich\UploadableField(mapping="bestiaire_images", fileNameProperty="name")
+     * @ORM\Column(type="string", length=255)
+     */
+    private $fileName;
+
+    /**
+     * @Vich\UploadableField(mapping="bestiaire_images", fileNameProperty="file_name")
      * @var File
      */
     private $imageFile;
@@ -94,12 +99,24 @@ class Image
         return $this;
     }
 
-    public function getImageFile(): ?string
+    public function setFileName(?string $fileName): self
+    {
+        $this->fileName = $fileName;
+
+        return $this;
+    }
+
+    public function getFileName(): ?string
+    {
+        return $this->fileName;
+    }
+
+    public function getImageFile()
     {
         return $this->imageFile;
     }
 
-    public function setImageFile(File $imageFile): void
+    public function setImageFile(File $imageFile = null): void
     {
         $this->imageFile = $imageFile;
 
