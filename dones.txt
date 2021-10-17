@@ -318,6 +318,10 @@ COMMIT ===> [IMAGE] Ajout propriété fileName générée par vichUploader + mig
 
 COMMIT ===> [GITIGNORE] Ajout de /public/uploads/
 
+    Création de CreateImageFormType
+
+COMMIT ===> [IMAGE] Création de CreateImageFormType
+
 infos pour plus tard :
     _ template, affichage selon droit mini : ex :
         {% if is_granted("CATEGORY_EDIT"") %}
