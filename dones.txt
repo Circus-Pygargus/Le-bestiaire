@@ -364,6 +364,11 @@ COMMIT ===> [ENTITY] Image, Movie : ajout prop featuredForCategory en relation O
 
 COMMIT ===> [Category] Création de CreateCategoryFormType
 
+    Admin/CategoryController::create() : ajout gestion du formulaire de création de catégorie
+    admin/category/create.html.twig : ajout du formulaire
+
+COMMIT ===> [FEAT][Category] Ajout enregistrement de nouvelle catégorie
+
 
 tips pour plus tard :
     _ template, affichage selon droit mini : ex :

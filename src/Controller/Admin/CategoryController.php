@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Category;
+use App\Form\CreateCategoryFormType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,12 +18,24 @@ class CategoryController extends AdminController
     /**
      * @Route("/create", name="create")
      */
-    public function create (): Response
+    public function create (Request $request): Response
     {
         $category = new Category();
         $this->denyAccessUnlessGranted('CATEGORY_CREATE', $category);
 
-        return $this->render('admin/category/create.html.twig');
+        $form = $this->createForm(CreateCategoryFormType::class, $category);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($category);
+            $em->flush();
+        }
+
+
+        return $this->render('admin/category/create.html.twig', [
+            'categoryForm' => $form->createView()
+        ]);
     }
 
     /**
