@@ -340,10 +340,8 @@ COMMIT ===> [Movie] Création de MovieVoter et des permissions MOVIE_CREATE et M
     Création de Admin/MovieController et le méthode create accessible selon permission
     Création du template movie/create.html.twig avec juste un titre
 
-    Création de CreateMovieFormType
+COMMIT ===> [MOVIE] Création de la route /admin/movies/create accessible avec permission (controller + template)
 
-    Modif de Admin/MovieController::Create pour enregistrement d'une nouvelle vidéo
-    Modif du template correspondant pour affichage du formulaire
 
 tips pour plus tard :
     _ template, affichage selon droit mini : ex :
