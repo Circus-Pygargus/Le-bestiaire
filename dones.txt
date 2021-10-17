@@ -331,9 +331,11 @@ COMMIT ===> [IMAGE] La route /admin/images/create permet d'enregistrer une nouve
         générée par vichUplaoder au lieu de name
         name sera renseignée par le contributeur
 
-commit ===> [Movie] Ajout propriété fileName générée par vichuploader + migration
+COMMIT ===> [Movie] Ajout propriété fileName générée par vichuploader + migration
 
     Création de MovieVoter, ajout des permissions MOVIE_CREATE et MOVIE_EDIT
+
+COMMIT ===> [Movie] Création de MovieVoter et des permissions MOVIE_CREATE et MOVIE_EDIT
 
     Création de Admin/MovieController et le méthode create accessible selon permission
     Création du template movie/create.html.twig avec juste un titre
