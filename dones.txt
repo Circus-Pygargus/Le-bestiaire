@@ -369,6 +369,16 @@ COMMIT ===> [Category] Création de CreateCategoryFormType
 
 COMMIT ===> [FEAT][Category] Ajout enregistrement de nouvelle catégorie
 
+Je veux externaliser la gestion du formulaire de création d'image, y compris le template
+    Admin/ImageController : ajout méthode new() qui gère maintenant le formulaire de création d'image
+        cette méthode renvoie le rendu du formulaire
+    création de admin/image/layouts/new.html.twig qui ne contient que le formulaire
+    admin/image/create.html.twig : remplacement du formulaire par un appel à la méthode twig render(controller())
+        qui pointe vers la nouvelle méthode ImageController::new()
+    Je peux maintenant utiliser ce formulaire dans plusieurs pages
+    et donc importer de nouvelles images en même temps que la création de Catégory ou de Monster
+
+COMMIT ===> [IMAGE] Le formulaire de création d'image peut être utilisé dans n'importe quelle page
 
 tips pour plus tard :
     _ template, affichage selon droit mini : ex :
