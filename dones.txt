@@ -314,6 +314,9 @@ COMMIT ===> [IMAGE] Création de la route /admin/images/create + controller + pe
 
 COMMIT ===> [IMAGE] Ajout propriété fileName générée par vichUploader + migration
 
+    Ajout /public/uploads/ dans le gitignore
+
+COMMIT ===> [GITIGNORE] Ajout de /public/uploads/
 
 infos pour plus tard :
     _ template, affichage selon droit mini : ex :
