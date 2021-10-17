@@ -310,7 +310,7 @@ COMMIT ===> [IMAGE] Création de la route /admin/images/create + controller + pe
     entité Image : ajout de la propriété fileName
         c'est elle qui sera générée par vichUploader plutôt que name
         name sera renseignée par le contributeur
-    vich_uploader.yaml : ajout utilisation de UniqidNamer
+    vich_uploader.yaml : ajout utilisation de UniqidNamer pour Image et Movie
 
 COMMIT ===> [IMAGE] Ajout propriété fileName générée par vichUploader + migration
 
@@ -327,9 +327,21 @@ COMMIT ===> [IMAGE] Création de CreateImageFormType
 
 COMMIT ===> [IMAGE] La route /admin/images/create permet d'enregistrer une nouvelle Image
 
+    Entité Movie : Ajout de la propriété fileName
+        générée par vichUplaoder au lieu de name
+        name sera renseignée par le contributeur
 
+commit ===> [Movie] Ajout propriété fileName générée par vichuploader + migration
 
+    Création de MovieVoter, ajout des permissions MOVIE_CREATE et MOVIE_EDIT
 
+    Création de Admin/MovieController et le méthode create accessible selon permission
+    Création du template movie/create.html.twig avec juste un titre
+
+    Création de CreateMovieFormType
+
+    Modif de Admin/MovieController::Create pour enregistrement d'une nouvelle vidéo
+    Modif du template correspondant pour affichage du formulaire
 
 tips pour plus tard :
     _ template, affichage selon droit mini : ex :

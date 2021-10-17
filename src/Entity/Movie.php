@@ -33,7 +33,12 @@ class Movie
     private $name;
 
     /**
-     * @Vich\UploadableField(mapping="bestiaire_movies", fileNameProperty="name")
+     * @ORM\Column(type="string", length=255)
+     */
+    private $fileName;
+
+    /**
+     * @Vich\UploadableField(mapping="bestiaire_movies", fileNameProperty="file_name")
      * @var File
      */
     private $movieFile;
@@ -55,7 +60,7 @@ class Movie
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime")
      */
-    private $CreatedAt;
+    private $createdAt;
 
     /**
      * @var \DateTime $datetime
@@ -63,7 +68,7 @@ class Movie
      * @Gedmo\Timestampable(on="update")
      * @ORM\Column(type="datetime")
      */
-    private $UpdatedAt;
+    private $updatedAt;
 
     public function getId(): ?int
     {
@@ -94,12 +99,24 @@ class Movie
         return $this;
     }
 
+    public function setFileName(?string $fileName): self
+    {
+        $this->fileName = $fileName;
+
+        return $this;
+    }
+
+    public function getFileName(): ?string
+    {
+        return $this->fileName;
+    }
+
     public function getMovieFile(): ?string
     {
         return $this->movieFile;
     }
 
-    public function setMovieFile(string $movieFile): void
+    public function setMovieFile(File $movieFile = null): void
     {
         $this->movieFile = $movieFile;
 
@@ -134,11 +151,11 @@ class Movie
 
     public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->CreatedAt;
+        return $this->createdAt;
     }
 
     public function getUpdatedAt(): ?\DateTimeInterface
     {
-        return $this->UpdatedAt;
+        return $this->updatedAt;
     }
 }
