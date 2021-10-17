@@ -23,6 +23,19 @@ class MovieController extends AdminController
         $movie = new Movie();
         $this->denyAccessUnlessGranted('MOVIE_CREATE', $movie);
 
-        return $this->render('admin/movie/create.html.twig');
+        $form = $this->createForm(CreateMovieFormTYpe::class, $movie);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $movie->setPostedBy($this->getUser());
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($movie);
+            $em->flush();
+        }
+
+        return $this->render('admin/movie/create.html.twig', [
+            'movieForm' => $form->createView()
+        ]);
     }
 }
