@@ -380,6 +380,10 @@ Je veux externaliser la gestion du formulaire de création d'image, y compris le
 
 COMMIT ===> [IMAGE] Le formulaire de création d'image peut être utilisé dans n'importe quelle page
 
+    route /admin : accès restreint à ROLE_CONTRIBUTOR minimum
+
+COMMIT ===> [SECU] route /admin : accès restreint à ROLE_CONTRIBUTOR minimum
+
 tips pour plus tard :
     _ template, affichage selon droit mini : ex :
         {% if is_granted("CATEGORY_EDIT") %}
