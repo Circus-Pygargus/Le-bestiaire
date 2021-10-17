@@ -70,6 +70,11 @@ class Movie
      */
     private $updatedAt;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Category::class, mappedBy="featuredMovie", cascade={"persist"})
+     */
+    private $featuredForCategory;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -157,5 +162,23 @@ class Movie
     public function getUpdatedAt(): ?\DateTimeInterface
     {
         return $this->updatedAt;
+    }
+
+
+    public function getFeaturedForCategory(): ?Category
+    {
+        return $this->featuredForCategory;
+    }
+
+    public function setFeaturedForCategory(Category $featuredForCategory): self
+    {
+        // set the owning side of the relation if necessary
+        if ($featuredForCategory->getFeaturedMovie() !== $this) {
+            $featuredForCategory->setFeaturedMovie($this);
+        }
+
+        $this->featuredForCategory = $featuredForCategory;
+
+        return $this;
     }
 }

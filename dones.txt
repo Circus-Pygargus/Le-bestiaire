@@ -352,6 +352,15 @@ COMMIT ===> [MOVIE] Création de CreateMovieFormType
 
 COMMIT ===> [BUG][MOVIE] Ajout enregistrement de nouvelle vidéo
 
+    Modif des entités Image, Movie et Category :
+        ajout prop permettant de savoir si une image ou une vidéo est déjà représentative d'une categorie
+        pas eu besoin de migration pour cela car relation inverse OneToOne
+
+COMMIT ===> [ENTITY] Image, Movie : ajout prop featuredForCategory en relation OneToOne inverse de Category.featuredImage et Category.featuredMovie
+
+
+
+
 tips pour plus tard :
     _ template, affichage selon droit mini : ex :
         {% if is_granted("CATEGORY_EDIT") %}

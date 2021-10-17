@@ -35,13 +35,13 @@ class Category
     private $name;
 
     /**
-     * @ORM\OneToOne(targetEntity=Image::class, cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=image::class, inversedBy="featuredForCategory", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $featuredImage;
 
     /**
-     * @ORM\OneToOne(targetEntity=Movie::class, cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Movie::class, inversedBy="featuredForCategory", cascade={"persist"})
      */
     private $featuredMovie;
 
@@ -79,12 +79,12 @@ class Category
         return $this;
     }
 
-    public function getFeaturedImage(): ?Image
+    public function getFeaturedImage(): ?image
     {
         return $this->featuredImage;
     }
 
-    public function setFeaturedImage(Image $featuredImage): self
+    public function setFeaturedImage(image $featuredImage): self
     {
         $this->featuredImage = $featuredImage;
 
