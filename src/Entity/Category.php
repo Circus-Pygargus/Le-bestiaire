@@ -36,7 +36,6 @@ class Category
 
     /**
      * @ORM\OneToOne(targetEntity=image::class, inversedBy="featuredForCategory", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
      */
     private $featuredImage;
 

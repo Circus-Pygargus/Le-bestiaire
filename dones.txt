@@ -96,14 +96,15 @@ Entités :
 TODOS :
     _ refaire l'opération de demande de nouveau mot de passe et vérifier que la durée de validation d'une heure est correctement traduite !
     _ Virer les novalidate des templates de formulaires
-    _ faire une page 404
+    _ modifier les pages 404 et 403
         voir pour afficher un message supplémentaire
         par ex celui ci-dessous
     _ dans ResetPasswordController::reset()
         modifier le message pour la 404 si token === null
         pas certain en fait, car ici le user n'est pas passé par l'email
-    _ dans RessetPasswordController::processSendingPasswordResetEmail()
+    _ dans ResetPasswordController::processSendingPasswordResetEmail()
         ceci : $mailer->send($email); devrait être dans un try catch
+        quoique ... le user est pas censé savoir si l'email renseigné existe s'il teste des trucs
     _ si clic sur un vieux mail de demande de nouveau mot de passe :
         la deuxième partie du message d'erreur :
             Un problème est survenu pendant la requête de demande de nouveau mot de passe - The reset password link is invalid. Please try to reset your password again.
@@ -122,7 +123,7 @@ Idées :
         - possibilité d'enregistrer des images de plusieurs manières :
             - un bouton 'Ajouter une image' ouvre une pop-up contenant un formulaire de nouvelle image
             - un bouton 'Choisir une image' ouvre une pop-up contenant les images enregistrées
-                ici un truc du genre vichUploader serait cool
+                ici un truc du genre vichUploader serait cool (ou liip jesaisplusquoi)
         - possibilité d'en créer qui n'habite pas ici : donne la possibilité de créer les parents de Max par exemple
         - pour le texte explicatif :
             - soit un wysiwyg avec un template intégré
@@ -135,6 +136,7 @@ Idées :
         - texte explicatif
         - arbre généalogique (présent si renseigné)
         - galerie d'images et vidéos (si trop dur autre onglet)
+        ou alors juste 2 infos et images
 
 (non vues) :
     _ création de catégorie ou de monstre, la featuredImage est obligatoire le featuredMovie ne l'est pas, mais sera pris en compte à la place de l'image si présent
@@ -383,6 +385,24 @@ COMMIT ===> [IMAGE] Le formulaire de création d'image peut être utilisé dans 
     route /admin : accès restreint à ROLE_CONTRIBUTOR minimum
 
 COMMIT ===> [SECU] route /admin : accès restreint à ROLE_CONTRIBUTOR minimum
+
+Changement :
+    à la création d'une categorie ou d'un monstre, attribuer une image de mise en avant n'est plus requis
+    la liaison se fera depuis l'image
+    Modif de CreateCategoryFormType
+    Modif des entités Category et Monster pour featuredImage nullable
+
+        php bin/console make:migration
+        php bin/console doctrine:migrations:migrate
+
+COMMIT ===> [ENTITY] Categoty & Monster : featuredImage est nullable + migrations
+
+
+
+
+
+
+
 
 tips pour plus tard :
     _ template, affichage selon droit mini : ex :

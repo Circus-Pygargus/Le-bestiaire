@@ -30,7 +30,7 @@ class CreateCategoryFormType extends AbstractType
             ])
             ->add('featuredImage', EntityType::class, [
                 'label' => 'Image représentative',
-                'required' => true,
+                'required' => false,
                 'class' => Image::class,
                 'query_builder' => function (ImageRepository $imageRepository) {
                     // Returns only images that are not already category's featuredImage
@@ -39,7 +39,12 @@ class CreateCategoryFormType extends AbstractType
                         ->where('ffc.id is NULL')
                         ->orderBy('i.name', 'ASC');
                 },
-                'choice_label' => 'name' // Entity property name
+                'choice_label' => 'name', // Entity property name
+                'multiple' => false,
+                'expanded' => false,
+                'empty_data' => '',
+                'placeholder' => 'Choisis ou pas ;)'
+
             ])
             ->add('explanatoryText', TextareaType::class, [
                 'label' => 'Description'
