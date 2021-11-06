@@ -397,6 +397,13 @@ Changement :
 
 COMMIT ===> [ENTITY] Categoty & Monster : featuredImage est nullable + migrations
 
+        php bin/console make:voter
+    => MonsterVoter
+    modif du fichier src/Security/Voter/MonsterVoter.php
+        ajout et gestion des permissions MONSTER_CREATE et MONSTER_EDIT
+
+COMMIT ==> [SECU] Création de MonsterVoter : permissions MONSTER_CREATE et MONSTER_EDIT
+
 
 
 
