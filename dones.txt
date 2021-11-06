@@ -404,8 +404,11 @@ COMMIT ===> [ENTITY] Categoty & Monster : featuredImage est nullable + migration
 
 COMMIT ==> [SECU] Création de MonsterVoter : permissions MONSTER_CREATE et MONSTER_EDIT
 
+    Création de Admin/MonsterController.php
+    ajout de la route /admin/monsters/create
+    création du template admin/monster/create.html.twig
 
-
+COMMIT ===> [MONSTER] création route /admin/monsters/create : controller + template basique
 
 
 
