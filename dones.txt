@@ -461,7 +461,17 @@ COMMIT ===> [MONSTER] template de création : ajout div pour affichage du wysiwy
     création du fichier assets/app-admin.js
     webpack config : ajout utilisation du fichier js créé
 
+        yarn run dev
+    -> le fichier se retrouve bien dans public/build/
+
 COMMIT ===> [APP] création app-admin.js + gestion via webpack encore
+
+    création de assets/js/ckeditor-manager.js
+    j'y ajoute la liaison entre la div #editor et ckeditor
+
+COMMIT ==> [WYSIWYG] création ckeditorManager.js, fait la liaison entre la div d'affichage du wysiwyg et ckeditor
+
+
 
 
 
