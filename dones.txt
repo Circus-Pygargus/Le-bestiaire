@@ -471,6 +471,14 @@ COMMIT ===> [APP] création app-admin.js + gestion via webpack encore
 
 COMMIT ==> [WYSIWYG] création ckeditorManager.js, fait la liaison entre la div d'affichage du wysiwyg et ckeditor
 
+    ajout import de ckEditorManager dans app_admin
+
+        yarn run dev   (ou yarn run watch)
+
+COMMIT ===> [WYSIWYG] import de ckEditorManager dans app_admin
+
+
+
 
 
 

@@ -1,2 +1,5 @@
+import ckEditorManager from './js/ckeditor-manager.js';
 
-console.log('je suis chargé')
+window.addEventListener('load', () => {
+    ckEditorManager();
+})
