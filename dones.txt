@@ -437,6 +437,19 @@ Je veux un wysiwyg :
 
 COMMIT ===> [WYSIWYG] download de ckeditor5 collé dans public/ckeditor
 
+    entité Monster : ajout propriété explanatoryText
+
+        php bin/console make:entity
+        => explanatoryText
+            text (type)
+            yes (for nullable)
+        php bin/console make:migration
+        php bin/console doctrine:migrations:migrate
+
+COMMIT ===> [MONSTER] Entité : ajout propriété explanatoryText + migration
+
+
+
 
 tips pour plus tard :
     _ template, affichage selon droit mini : ex :

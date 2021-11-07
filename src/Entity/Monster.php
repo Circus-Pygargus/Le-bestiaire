@@ -102,6 +102,11 @@ class Monster
      */
     private $cossard;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $explanatoryText;
+
     public function __construct()
     {
         $this->parents = new ArrayCollection();
@@ -359,6 +364,18 @@ class Monster
     public function setCossard(bool $cossard): self
     {
         $this->cossard = $cossard;
+
+        return $this;
+    }
+
+    public function getExplanatoryText(): ?string
+    {
+        return $this->explanatoryText;
+    }
+
+    public function setExplanatoryText(?string $explanatoryText): self
+    {
+        $this->explanatoryText = $explanatoryText;
 
         return $this;
     }
