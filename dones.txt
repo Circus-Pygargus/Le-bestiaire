@@ -94,6 +94,9 @@ Entités :
 
 
 TODOS :
+    _ édition d'un monstre :
+        - choix de l'image de mise en avant parmi celles attribuées
+            comme ça j'affiche pas toutes les images existantes
     _ refaire l'opération de demande de nouveau mot de passe et vérifier que la durée de validation d'une heure est correctement traduite !
     _ Virer les novalidate des templates de formulaires
     _ modifier les pages 404 et 403
@@ -494,6 +497,15 @@ COMMIT ===> [WYSIWYG] ckEditorManager : modif pour utilisation possible avec d'a
     ckEditorManager : modif du drop down heading : uniquement paragraphe et h3
 
 COMMIT ===> [WYSIWYG] dans le Heading : uniquement p et h3
+
+    ImageController :
+     - suppression de la méthode new
+     - utilisation de renderForm dans create()
+    templates/admin/create.html.twig :
+     - version simplifiée du formulaire sans l'appel au controller
+
+COMMIT ===> [FIX] simplification de la gestion du formulaire de création d'image
+
 
 
 

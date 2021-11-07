@@ -23,12 +23,6 @@ class ImageController extends AdminController
         $image = new Image();
         $this->denyAccessUnlessGranted('IMAGE_CREATE', $image);
 
-        return $this->render('admin/image/create.html.twig');
-    }
-
-    public function new (Request $request): Response
-    {
-        $image = new Image();
         $form = $this->createForm(CreateImageFormType::class, $image);
 
         $form->handleRequest($request);
@@ -40,7 +34,7 @@ class ImageController extends AdminController
             $em->flush();
         }
 
-        return $this->renderForm('admin/image/layouts/new.html.twig', [
+        return $this->renderForm('admin/image/create.html.twig', [
             'imageForm' => $form
         ]);
     }

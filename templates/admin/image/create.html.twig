@@ -3,5 +3,5 @@
 {% block adminContent %}
     <h1>Nouvelle Image</h1>
 
-    {{ render(controller('App\\Controller\\Admin\\ImageController::new')) }}
+    {{ form(imageForm) }}
 {% endblock %}
