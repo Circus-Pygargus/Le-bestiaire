@@ -3,5 +3,20 @@
 {% block adminContent %}
     <h1>Création d'un nouveau monstre</h1>
 
-    {{ form(monsterForm) }}
+    {{ form_start(monsterForm) }}
+        {{ form_row(monsterForm.name) }}
+        {{ form_row(monsterForm.gender) }}
+        {{ form_row(monsterForm.nicknames) }}
+        {{ form_row(monsterForm.parents) }}
+        {{ form_row(monsterForm.birthDay) }}
+        {{ form_row(monsterForm.arrivalDate) }}
+        {{ form_row(monsterForm.leavingDate) }}
+        {{ form_row(monsterForm.reasonForLeaving) }}
+        {{ form_row(monsterForm.category) }}
+        {{ form_row(monsterForm.cossard) }}
+        <p>Explications supplémentaires</p>
+        <div id="editor"></div>
+        {{ form_row(monsterForm.explanatoryText) }}
+        {{ form_row(monsterForm.submit) }}
+    {{ form_end(monsterForm) }}
 {% endblock %}

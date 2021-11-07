@@ -452,6 +452,11 @@ COMMIT ===> [MONSTER] Entité : ajout propriété explanatoryText + migration
 
 COMMIT ==> [MONSTER] createMonsterFormType : ajout champ caché pour prop explanatoryText pour wysiwyg
 
+    template admin/monster/create.html.twig :
+    modif du formulaire : ajout de tous les champs voulus
+    + création div #editor pour afficher wysiwyg
+
+COMMIT ===> [MONSTER] template de création : ajout div pour affichage du wysiwyg
 
 
 
