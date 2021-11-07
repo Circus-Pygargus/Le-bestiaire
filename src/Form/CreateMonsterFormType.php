@@ -82,7 +82,10 @@ class CreateMonsterFormType extends AbstractType
                 'label' => 'Cossard',
                 'required' => false
             ])->add('explanatoryText', HiddenType::class, [
-                'required' => false
+                'required' => false,
+                'attr' => [
+                    'class' => 'fill-me'
+                ]
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Créer'

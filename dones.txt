@@ -481,7 +481,11 @@ COMMIT ===> [WYSIWYG] import de ckEditorManager dans app_admin
 
 COMMIT ===> [WYSIWYG] chargement des js ckeditor et app_admin dans le template de création de monstre
 
+    ckEditorManager : ajout récupération du texte mis en page et envoi dans le champ hidden explantoryText juste avant submit du formulaire
+    createMonsterFormType : ajout de la classe fill-me au champ caché
+    test : ça enregistre en BDD =) !
 
+COMMIT ===> [WISYWIG] ckEditorManager : colle le texte mis en forme dans le champ hidden du form juste avant submit
 
 
 
