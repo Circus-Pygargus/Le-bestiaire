@@ -406,9 +406,21 @@ COMMIT ==> [SECU] Création de MonsterVoter : permissions MONSTER_CREATE et MONS
 
     Création de Admin/MonsterController.php
     ajout de la route /admin/monsters/create
+    avec vérif ROLE_CONTRIBUTOR minimum
     création du template admin/monster/create.html.twig
 
-COMMIT ===> [MONSTER] création route /admin/monsters/create : controller + template basique
+COMMIT ===> [MONSTER] création route /admin/monsters/create : controller + verif ROLE_CONTRIBUTOR + template basique
+
+   modif Entity Monster :
+        propriété nicknames type text au lieu de array
+        + ajout de la méthode __toString()
+
+        php bin/console make:migration
+        php bin/console doctrine:migrations:migrate
+
+COMMIT ===> [MONSTER] Entité : modif propriété nicknames en text type + migration
+
+
 
 
 

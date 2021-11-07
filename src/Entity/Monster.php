@@ -37,9 +37,9 @@ class Monster
     private $gender;
 
     /**
-     * @ORM\Column(type="array")
+     * @ORM\Column(type="text", nullable=true)
      */
-    private $nicknames = [];
+    private $nicknames;
 
     /**
      * @ORM\ManyToMany(targetEntity=Monster::class, inversedBy="children")
@@ -110,6 +110,11 @@ class Monster
         $this->movies = new ArrayCollection();
     }
 
+    public function __toString (): string
+    {
+        return $this->getName();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -151,12 +156,12 @@ class Monster
         return $this;
     }
 
-    public function getNicknames(): ?array
+    public function getNicknames(): ?string
     {
         return $this->nicknames;
     }
 
-    public function setNicknames(array $nicknames): self
+    public function setNicknames(?string $nicknames): self
     {
         $this->nicknames = $nicknames;
 
