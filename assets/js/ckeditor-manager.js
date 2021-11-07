@@ -3,8 +3,7 @@ const ckEditorManager = () => {
         // Initialisation ckeditor
         .create(document.querySelector('#editor'))
         .then(editor => {
-            console.log(document.querySelector('form'))
-              document.querySelector('form').addEventListener('submit', (e) => {
+              editor.sourceElement.parentElement.addEventListener('submit', (e) => {
                   e.preventDefault();
                   e.target.querySelector('.fill-me').value = editor.getData();
                   e.target.submit();

@@ -487,6 +487,11 @@ COMMIT ===> [WYSIWYG] chargement des js ckeditor et app_admin dans le template d
 
 COMMIT ===> [WISYWIG] ckEditorManager : colle le texte mis en forme dans le champ hidden du form juste avant submit
 
+    ckEditorManager : modif pour utilisation possible avec d'autres formulaires
+
+COMMIT ===> [WYSIWYG] ckEditorManager : modif pour utilisation possible avec d'autres formulaires
+
+
 
 
 
