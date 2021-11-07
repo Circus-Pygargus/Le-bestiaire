@@ -420,7 +420,9 @@ COMMIT ===> [MONSTER] création route /admin/monsters/create : controller + veri
 
 COMMIT ===> [MONSTER] Entité : modif propriété nicknames en text type + migration
 
+    Création de Form/CreateMonsterFormType (manque le champ wysiwyg)
 
+COMMIT ===> [MONSTER] FormType : création de CreateMonsterFormType
 
 
 
