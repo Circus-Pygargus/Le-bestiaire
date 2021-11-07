@@ -491,7 +491,9 @@ COMMIT ===> [WISYWIG] ckEditorManager : colle le texte mis en forme dans le cham
 
 COMMIT ===> [WYSIWYG] ckEditorManager : modif pour utilisation possible avec d'autres formulaires
 
+    ckEditorManager : modif du drop down heading : uniquement paragraphe et h3
 
+COMMIT ===> [WYSIWYG] dans le Heading : uniquement p et h3
 
 
 
