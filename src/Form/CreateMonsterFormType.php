@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -79,6 +80,8 @@ class CreateMonsterFormType extends AbstractType
             ])
             ->add('cossard', CheckboxType::class, [
                 'label' => 'Cossard',
+                'required' => false
+            ])->add('explanatoryText', HiddenType::class, [
                 'required' => false
             ])
             ->add('submit', SubmitType::class, [

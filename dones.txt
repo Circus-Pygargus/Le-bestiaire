@@ -448,6 +448,11 @@ COMMIT ===> [WYSIWYG] download de ckeditor5 collé dans public/ckeditor
 
 COMMIT ===> [MONSTER] Entité : ajout propriété explanatoryText + migration
 
+    CreateMonsterFormType : ajout du champ hidden nécessaire à ckeditor pour le champ explanatoryText
+
+COMMIT ==> [MONSTER] createMonsterFormType : ajout champ caché pour prop explanatoryText pour wysiwyg
+
+
 
 
 
