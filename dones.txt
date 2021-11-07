@@ -429,6 +429,13 @@ COMMIT ===> [MONSTER] FormType : création de CreateMonsterFormType
 
 COMMIT ===> [MONSTER] ajout affichage et gestion du formulaire de création de monster
 
+Je veux un wysiwyg :
+    je vais prendre ckeditor 5 :
+    demo : https://ckeditor.com/ckeditor-5/demo/#classic
+    je passe par la page de création custom et download : https://ckeditor.com/ckeditor-5/download/
+    je colle le contenu télécharger dans public/ckeditor5/
+
+COMMIT ===> [WYSIWYG] download de ckeditor5 collé dans public/ckeditor
 
 
 tips pour plus tard :
