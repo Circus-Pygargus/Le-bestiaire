@@ -477,7 +477,9 @@ COMMIT ==> [WYSIWYG] création ckeditorManager.js, fait la liaison entre la div 
 
 COMMIT ===> [WYSIWYG] import de ckEditorManager dans app_admin
 
+    ajout appel de ckeditor.js et de app_admin dans le template de création de monstre
 
+COMMIT ===> [WYSIWYG] chargement des js ckeditor et app_admin dans le template de création de monstre
 
 
 

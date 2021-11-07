@@ -20,3 +20,9 @@
         {{ form_row(monsterForm.submit) }}
     {{ form_end(monsterForm) }}
 {% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('ckeditor5/build/ckeditor.js') }}"></script>
+
+    {{ encore_entry_script_tags('app_admin') }}
+{% endblock %}
