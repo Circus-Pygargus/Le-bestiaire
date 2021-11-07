@@ -512,6 +512,13 @@ COMMIT ===> [FIX] simplification de la gestion du formulaire de création d'imag
 
 COMMIT => [Image] création d'Image : possibilité de la définir comme représentative d'une categorie existante
 
+    tests d'affichage de l'image représentative d'une catégorie :
+    modif Categorypontroller::edit et templates/admin/category/edit.html.twig
+
+COMMIT ===> [TEST] tests d'affichage de l'image représentative d'une catégorie
+
+
+
 
 
 tips pour plus tard :

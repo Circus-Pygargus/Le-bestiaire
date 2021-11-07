@@ -2,4 +2,7 @@
 
 {% block adminContent %}
     <h1>Éditer une catégorie</h1>
+    <p>{{ cat.featuredImage.fileName }}</p>
+
+    <img width="300px" height="300px" src="{{ vich_uploader_asset(cat.featuredImage, 'imageFile') }}" alt="{{ cat.featuredimage.alt }}">
 {% endblock %}
