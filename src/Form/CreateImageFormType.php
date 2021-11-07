@@ -2,7 +2,10 @@
 
 namespace App\Form;
 
+use App\Entity\Category;
 use App\Entity\Image;
+use App\Repository\CategoryRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -54,9 +57,23 @@ class CreateImageFormType extends AbstractType
                     ])
                 ]
             ])
-        ->add('submit', SubmitType::class, [
+            ->add('featuredForCategory', EntityType::class, [
+                'label' => 'Représente la catégorie',
+                'required' => false,
+                'class' => Category::class,
+                'query_builder' => function (CategoryRepository $categoryRepository) {
+                    return $categoryRepository->createQueryBuilder('c')
+                        ->where('c.featuredImage is null')
+                        ->orderBy('c.name', 'ASC');
+                },
+                'choice_label' => 'name',
+                'expanded' => false,
+                'multiple' => false,
+            ])
+            ->add('submit', SubmitType::class, [
             'label' => 'Enregistrer'
-        ]);
+            ])
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)

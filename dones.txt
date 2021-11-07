@@ -506,7 +506,11 @@ COMMIT ===> [WYSIWYG] dans le Heading : uniquement p et h3
 
 COMMIT ===> [FIX] simplification de la gestion du formulaire de création d'image
 
+    CreateImageFormType :
+    ajout champ featuredForCategory :
+    seules les catégories n'ayant pas d'image représentative sont listées
 
+COMMIT => [Image] création d'Image : possibilité de la définir comme représentative d'une categorie existante
 
 
 
