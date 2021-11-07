@@ -458,6 +458,12 @@ COMMIT ==> [MONSTER] createMonsterFormType : ajout champ caché pour prop explan
 
 COMMIT ===> [MONSTER] template de création : ajout div pour affichage du wysiwyg
 
+    création du fichier assets/app-admin.js
+    webpack config : ajout utilisation du fichier js créé
+
+COMMIT ===> [APP] création app-admin.js + gestion via webpack encore
+
+
 
 
 
