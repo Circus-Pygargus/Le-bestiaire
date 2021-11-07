@@ -424,7 +424,10 @@ COMMIT ===> [MONSTER] Entité : modif propriété nicknames en text type + migra
 
 COMMIT ===> [MONSTER] FormType : création de CreateMonsterFormType
 
+    Ajout affichage et gestion du formulaire de création de monster dans Admin/MonsterController
+    Ajout affichage du même formulaire dans le template admin/monster/create (ultra basique)
 
+COMMIT ===> [MONSTER] ajout affichage et gestion du formulaire de création de monster
 
 
 
