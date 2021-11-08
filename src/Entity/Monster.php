@@ -72,7 +72,7 @@ class Monster
     private $reasonForLeaving;
 
     /**
-     * @ORM\OneToOne(targetEntity=Image::class, cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Image::class, inversedBy="featuredForMonster", cascade={"persist"})
      */
     private $featuredImage;
 

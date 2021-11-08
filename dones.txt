@@ -517,6 +517,11 @@ COMMIT => [Image] création d'Image : possibilité de la définir comme représe
 
 COMMIT ===> [TEST] tests d'affichage de l'image représentative d'une catégorie
 
+    Entité Image : ajout propriété featuredForMonster inversée par Monster::featuredImage
+    Entité Monster : ajout commentaire mappedBy sur la propriété featuredImage,
+    suppression de delete onCascade
+
+COMMIT ===> [IMAGE] Entité : ajout propriété featuredForMonster inversée par Monster -- featuredImage
 
 
 

@@ -75,6 +75,11 @@ class Image
      */
     private $featuredForCategory;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Monster::class, mappedBy="featuredImage", cascade={"persist"})
+     */
+    private $featuredForMonster;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -177,6 +182,22 @@ class Image
         }
 
         $this->featuredForCategory = $featuredForCategory;
+
+        return $this;
+    }
+
+    public function getFeaturedForMonster (): ?Monster
+    {
+        return $this->featuredForMonster;
+    }
+
+    public function setFeaturedForMonster (Monster $featuredForMonster): self
+    {
+        if ($featuredForMonster->getFeaturedImage() !== $this) {
+            $featuredForMonster->setFeaturedImage($this);
+        }
+
+        $this->featuredForMonster = $featuredForMonster;
 
         return $this;
     }
