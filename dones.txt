@@ -523,6 +523,11 @@ COMMIT ===> [TEST] tests d'affichage de l'image représentative d'une catégorie
 
 COMMIT ===> [IMAGE] Entité : ajout propriété featuredForMonster inversée par Monster -- featuredImage
 
+    CreateImageFormType : ajout d'un champ select pour featuredForMonster
+
+COMMIT ===> [IMAGE] CreateImageFormType : ajout champ select pour featuredForMonster
+
+
 
 
 

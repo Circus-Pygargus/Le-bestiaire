@@ -4,7 +4,9 @@ namespace App\Form;
 
 use App\Entity\Category;
 use App\Entity\Image;
+use App\Entity\Monster;
 use App\Repository\CategoryRepository;
+use App\Repository\MonsterRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -69,6 +71,20 @@ class CreateImageFormType extends AbstractType
                 'choice_label' => 'name',
                 'expanded' => false,
                 'multiple' => false,
+            ])
+            ->add('featuredForMonster', EntityType::class, [
+                'label' => 'Représente l\'animal',
+                'required' => false,
+                'class' => Monster::class,
+                'query_builder' => function (MonsterRepository $monsterRepository) {
+                    return $monsterRepository->createQueryBuilder('m')
+                        ->where('m.featuredImage is null')
+                        ->addOrderBy('m.category', 'ASC')
+                        ->addOrderBy('m.name', 'ASC');
+                },
+                'choice_label' => 'name',
+                'expanded' => false,
+                'multiple' => false
             ])
             ->add('submit', SubmitType::class, [
             'label' => 'Enregistrer'
