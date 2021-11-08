@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ImageRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\HttpFoundation\File\File;
@@ -79,6 +81,17 @@ class Image
      * @ORM\OneToOne(targetEntity=Monster::class, mappedBy="featuredImage", cascade={"persist"})
      */
     private $featuredForMonster;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Monster::class, mappedBy="images", cascade={"persist"})
+     */
+    private $monsters;
+
+
+    public function __construct ()
+    {
+        $this->monsters = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -198,6 +211,34 @@ class Image
         }
 
         $this->featuredForMonster = $featuredForMonster;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Monster[]
+     */
+    public function getMonsters (): ?Collection
+    {
+        return $this->monsters;
+    }
+
+    public function addMonster (Monster $monster): self
+    {
+        if (!$this->monsters->contains($monster)) {
+            $this->monsters[] = $monster;
+            $monster->addImage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMonster ($monster): self
+    {
+        if ($this->monsters->contains($monster)) {
+            $this->monster->removeElement($monster);
+            $monster->removeImage($this);
+        }
 
         return $this;
     }

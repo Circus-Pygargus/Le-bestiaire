@@ -82,7 +82,7 @@ class Monster
     private $featuredMovie;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Image::class)
+     * @ORM\ManyToMany(targetEntity=Image::class, inversedBy="monsters", cascade={"persist"})
      */
     private $images;
 
@@ -299,7 +299,7 @@ class Monster
     /**
      * @return Collection|Image[]
      */
-    public function getImages(): Collection
+    public function getImages(): ?Collection
     {
         return $this->images;
     }
@@ -308,6 +308,7 @@ class Monster
     {
         if (!$this->images->contains($image)) {
             $this->images[] = $image;
+            $image->addMonster($this);
         }
 
         return $this;
@@ -315,8 +316,10 @@ class Monster
 
     public function removeImage(Image $image): self
     {
-        $this->images->removeElement($image);
-
+        if ($this->images->contains($image)) {
+            $this->images->removeElement($image);
+            $image->removeMonster($this);
+        }
         return $this;
     }
 

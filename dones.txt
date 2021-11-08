@@ -121,6 +121,35 @@ TODOS :
 
 
 Idées :
+    _ concernant les relations avec les images :
+        - je ne veux pas d'image non associée à un monstre mais on doit pouvoir uploader l'image avant de créer le monstre
+        - pour l'instant avoir un formulaire d'image dans la page de création d'un monstre n'est pas concluante
+        - soluce possible :
+            - un ! disant à l'admin qu'il y a un soucis
+                au moins en page d'accueil, si c'est pas sur toutes les pages
+            - dans les pages d'admin, un ! par problème (sur les boutons d'accès direct au prob), les possibilités sont :
+                image non reliée à un monstre
+                monstre sans image représentative
+                monstre sans aucune image
+                catégorie sans image représentative
+            - le bouton marqué d'un ! envoie sur une des 3 pages listant les images, montres ou catégories.
+                en premier apparaissent ceux qui ont un soucis avec affichage du prob à régler
+        - inconvénients :
+            - faire toutes les requête nécessaires sur plusieurs pages ? bof
+                à la connexion de l'admin ? bof
+                Toutes les requêtes ??? bof bof bof !!!
+            - moyen de stoker l'info que tout va bien :
+                BDD
+                autres ????
+        - idée : EntitySupervisor
+            - une table avec 3 booléens
+            - si une des entités présente un soucis à la création ou à l'édition
+                le booléen correspondant prend la valeur false
+            - si une entité est éditée et résout son soucis
+                => vérif sur les entités correspondantes
+                ou sur les 3 ??
+                modif valeur du booléen sur true
+        - un contributeur est-il informé du soucis ? je pense qu'il devrait pouvoir, à voir !
     _ possibilité upload d'image avec attribution à plusieurs Monstre ?
     _ création d'un monstre :
         - possibilité d'enregistrer des images de plusieurs manières :
@@ -520,12 +549,18 @@ COMMIT ===> [TEST] tests d'affichage de l'image représentative d'une catégorie
     Entité Image : ajout propriété featuredForMonster inversée par Monster::featuredImage
     Entité Monster : ajout commentaire mappedBy sur la propriété featuredImage,
     suppression de delete onCascade
+    pas besoin de make:migration
 
 COMMIT ===> [IMAGE] Entité : ajout propriété featuredForMonster inversée par Monster -- featuredImage
 
     CreateImageFormType : ajout d'un champ select pour featuredForMonster
 
 COMMIT ===> [IMAGE] CreateImageFormType : ajout champ select pour featuredForMonster
+
+    Entité Image : ajout propriété monsters inverse de Monster::images
+    Entité Monster : modif addImage() et removeImage() pour que les actions cascadent
+
+COMMIT ===> [IMAGE] Entité : ajout propriété monsters inverse de Monster::images
 
 
 
